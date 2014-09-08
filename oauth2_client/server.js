@@ -12,11 +12,10 @@ request.get(
       console.log('---------------- ERROR ----------------');
       console.log(err);
     } else {
-      console.log('---------------- res ----------------');
-      console.log(res)
+//      console.log('---------------- res ----------------');
+//      console.log(res)
       console.log('---------------- body ----------------');
       console.log(body);
-      console.log('url: ' + url);
       console.log('Result Code: ' + res.statusCode);
     }
     clearTimeout(timeout);
