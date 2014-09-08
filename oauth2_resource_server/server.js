@@ -24,7 +24,7 @@ app.get('/protected/page1', passport.authenticate('oauth2'),  function(req, res,
 
 newStrategy = function(strategy) {
   return new OAuth2Strategy({
-    authorizationURL: 'https://localhost:3002/oauth2/authorize',
+    authorizationURL: 'http://localhost:3002/oauth2/authorize',
     tokenURL: 'http://localhost:3002/oauth2/token',
     clientID: 'oauth2_client_id',
     clientSecret: 'oauth2_client_secret',
