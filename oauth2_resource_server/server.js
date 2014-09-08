@@ -8,13 +8,15 @@ app.all('*', function(req, res, next) {
   next();
 });
 
-app.get(
-  '/protected/page1',
-  function(req, res, next) {
-    res.send('Page1 is not yet Protected');
-    next();
-  }
-);
+app.get('/public/page1', function(req, res, next) {
+  res.send('Public Page #1');
+  next();
+});
+
+app.get('/protected/page1', function(req, res, next) {
+  res.send('Protected Page #1 is not yet Protected');
+  next();
+});
 
 var PORT = 3001;
 console.log('Listening on port: ' + PORT);
