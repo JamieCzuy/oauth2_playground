@@ -1,6 +1,8 @@
+console.log('OAuth2_Client');
 var request = require('request');
 
-var url = 'https://localhost:3001/protected/page';
+var url = 'http://localhost:3001/protected/page1';
+// To Do: Change to HTTPS
 
 console.log('Getting: ' + url);
 request.get(
@@ -25,7 +27,4 @@ console.log('Waiting for Response');
 timeout = setTimeout(function() {
     console.log('Timed Out (Response did not come in 30 seconds)');
 }, 30 * 1000);
-
-
-console.log('Hi');
 
