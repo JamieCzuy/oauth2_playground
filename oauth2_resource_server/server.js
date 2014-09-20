@@ -28,7 +28,7 @@ newStrategy = function(strategy) {
     tokenURL: 'http://localhost:3002/oauth2/token',
     clientID: 'oauth2_client_id',
     clientSecret: 'oauth2_client_secret',
-    callbackURL: 'https://localhost:3001/oauth2/callback'
+    callbackURL: 'https://localhost:3003/authentication/callback'
   },
   function(accessToken, refreshToken, profile, done) {
     // ---- User.findOrCreate ---- //

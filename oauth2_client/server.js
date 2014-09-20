@@ -15,6 +15,13 @@ var response_logger = function(err, res, body) {
     console.log('---------------- body ----------------');
     console.log(body);
     console.log('Result Code: ' + res.statusCode);
+    if (res.statusCode >= 300 && res.statusCode < 400) {
+      console.log('Location: ' + res.headers.location);
+      request.get({
+        url: res.headers.location,
+        followRedirect: false },
+        response_logger);
+    }
   }
   clearTimeout(timeout);
 };
@@ -24,7 +31,7 @@ console.log('Getting: ' + public_page_url);
 request.get(public_page_url, response_logger);
 
 console.log('Getting: ' + protected_page_url);
-request.get(protected_page_url, response_logger);
+request.get({ url: protected_page_url, followRedirect: false }, response_logger);
 
 
 console.log('Waiting for Response');
