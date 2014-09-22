@@ -16,7 +16,7 @@ var express = require('express')
   
 var app = express.createServer();
 app.set('view engine', 'ejs');
-app.use(express.logger());
+//app.use(express.logger());
 app.use(express.cookieParser());
 app.use(express.bodyParser());
 app.use(express.session({ secret: 'keyboard cat' }));
@@ -51,4 +51,5 @@ app.post('/oauth/token', oauth2.token);
 
 app.get('/api/userinfo', user.info);
 
+console.log('App is listening on 3000');
 app.listen(3000);
