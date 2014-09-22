@@ -12,14 +12,23 @@ app.all('*', function(req, res, next) {
 });
 
 app.get('/public/page1', function(req, res, next) {
+  console.log('Public Page');
   res.send('Public Page #1');
   next();
 });
 
 app.get('/protected/page1', passport.authenticate('oauth2'),  function(req, res, next) {
+  console.log('Protected Page');
   res.send('Protected Page #1 is not yet Protected');
   next();
 });
+
+app.get('/protected/page1/callback',
+        passport.authenticate('oauth2', { failureRedirect: '/login' }),
+        function(req, res) {
+          console.log('Successful page1 authentication');
+          res.redirect('/');
+        });
 
 
 newStrategy = function(strategy) {
@@ -28,11 +37,13 @@ newStrategy = function(strategy) {
     tokenURL: 'http://localhost:3002/oauth2/token',
     clientID: 'oauth2_client_id',
     clientSecret: 'oauth2_client_secret',
-    callbackURL: 'https://localhost:3003/authentication/callback'
+//    callbackURL: 'http://localhost:3003/authentication/callback'
+    callbackURL: 'http://localhost:3001/protectedpag1/callback'
   },
   function(accessToken, refreshToken, profile, done) {
     // ---- User.findOrCreate ---- //
     console.log('User has been Authenticated');
+    console.log('profile.id: ' + profile.id);
     return done({username: 'OAuth2 User'});
   });
 }

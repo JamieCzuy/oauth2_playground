@@ -31,10 +31,11 @@ console.log('Getting: ' + public_page_url);
 request.get(public_page_url, response_logger);
 
 console.log('Getting: ' + protected_page_url);
-request.get({ url: protected_page_url, followRedirect: false }, response_logger);
+// request.get({ url: protected_page_url, followRedirect: false }, response_logger);
+request.get({ url: protected_page_url, followRedirect: true }, response_logger);
 
 
-console.log('Waiting for Response');
+console.log('Waiting for Response(s):');
 timeout = setTimeout(function() {
     console.log('Timed Out (Response did not come in 30 seconds)');
 }, 30 * 1000);
